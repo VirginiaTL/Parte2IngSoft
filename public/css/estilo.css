@@ -1,0 +1,236 @@
+h1{
+    font-family: 'Satisfy';
+	text-shadow: 2px 2px 5px black;
+	font-size: 40;
+	color: white;
+	text-align: center;
+
+    
+}
+body{
+	background-image: url('/img/vinyl-1595847.jpg');
+	background-size: cover;
+	margin:0;
+	
+}
+
+img{
+    
+    height: 150;
+   
+}
+
+footer{
+	
+	width: 100%;
+	bottom: 0;
+	color:white;
+	font-size: 13;
+	background-color:1A1A1A ;
+	
+	
+}
+div#pie{
+	display: grid;
+	grid-template-columns: repeat(3,1fr);
+	grid-gap:50px;
+	padding: 20px 0px;
+}
+div#logo{
+	justify-content: center;
+	display: flex;
+}
+.cabez{
+	height: 60;
+    float:right;
+}
+
+.cabezicono{
+	height: 60;
+    float:left;
+}
+
+a#musiclab{
+    text-decoration: none;
+    color:white;
+    font-size: 50;
+    font-family: 'Oleo Script Swash Caps';
+	
+}
+
+div#encabezado{
+	background-image: linear-gradient( 135deg, #1f1f1fa6 10%, #c2181836 100%);
+	background-color:black ;
+    padding-top: 10px;
+	height: 75;
+	border-radius: 0 0 30% 30% / 50%;
+	padding: 20px;
+	
+}
+
+
+
+/*------------------------------------------------------------------------------------------*/
+
+div#contenedor{ font-family: 'Overpass', sans-serif; }
+div#contenedor div#contenedor_horiz{
+    background: linear-gradient(to right,#202926 49%,#15201C 50%);
+    width: 250px;
+    height: 200px;
+    padding: 75px 55px;
+    margin: 0 auto;
+    border-radius: 80%;
+}
+div#contenedor .title{
+    color: #838585;
+    font-family: 'Teko', sans-serif;
+    font-size: 35px;
+    font-weight: 400;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0 0 10px 0;
+}
+div#contenedor_horiz .form-group{
+    background-color: rgba(255,255,255,0.15);
+    font-size: 0;
+    margin: 0 0 15px;
+    border: 1px solid #838585;
+    border-radius: 3px;
+}
+div#contenedor_horiz .input-icon{
+    color: #838585;
+    font-size: 16px;
+    text-align: center;
+    line-height: 48px;
+    height: 45px;
+    width: 40px;
+    vertical-align: top;
+    display: inline-block;
+}
+div#contenedor_horiz .form-control{
+    color: #838585;
+    background-color: transparent;
+    font-size: 14px;
+    letter-spacing: 1px;
+    width: calc(100% - 40px);
+    height: 45px;
+    padding: 2px 10px 0 0;
+    box-shadow: none;
+    border: none;
+    border-radius: 0;
+    display: inline-block;
+    transition: all 0.3s;
+}
+div#contenedor_horiz .form-control:focus{
+    box-shadow: none;
+    border: none;
+}
+div#contenedor_horiz .form-control::placeholder{
+    color: #838585;
+    font-size: 13px;
+}
+div#contenedor_horiz .btn{
+    color: rgba(255,255,255,0.8);
+    background: rgba(201, 31, 31, 0.822);
+    font-size: 15px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    width: 120px;
+    height: 120px;
+    line-height: 120px;
+    margin: 0 0 15px 0;
+    border: none;
+    border-radius: 50%;
+    display: inline-block;
+    transform: translateX(30px);
+    transition: all 0.3s ease;
+}
+div#contenedor_horiz .btn:hover,
+div#contenedor_horiz .btn:focus{
+    color: rgb(255, 255, 255);
+    letter-spacing: 4px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+div#contenedor_horiz .forgot-pass{
+    font-size: 12px;
+    text-align: left;
+    width: calc(100% - 125px);
+    display: inline-block;
+    vertical-align: top;
+}
+div#contenedor_horiz .forgot-pass a{
+    color: #999;
+    transition: all 0.3s ease;
+}
+div#contenedor_horiz .forgot-pass a:hover{
+    color: #555;
+    text-decoration: underline;
+}
+@media only screen and (max-width:379px){
+    div#contenedor div#contenedor_horiz{
+        width: 100%;
+    }
+}
+
+/*------------------------------------------------------------------------------------------*/
+#container{
+    width: min(100%, 1000px);
+    margin: 100px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .card{
+    width: 230px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    background-color: rgb(241, 241, 231);
+    padding: 20px;
+    border-radius: 20px;
+  }
+
+  .card a {
+    width: 100%;
+  }
+
+  .card span{
+    color: #6e6e6e;
+    font-weight: 500;
+  }
+
+  section{
+      background-color: rgb(100, 21, 21);
+      width: 100%;
+      border-radius: 20px;
+      text-align: center;
+  }
+
+  /*-------------------------*/
+  #logout{
+    font-family: 'Overpass', sans-serif;
+    color: rgba(255,255,255,0.8);
+    background: rgba(201, 31, 31, 0.822);
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+    border: none;
+    border-radius: 50%;
+    display: inline-block;
+    transform: translateX(30px);
+    transition: all 0.3s ease;
+    text-align: center;
+    text-decoration: none;
+}
+#logout:hover,
+#logout:focus{
+    color: rgb(255, 255, 255);
+    letter-spacing: 4px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
