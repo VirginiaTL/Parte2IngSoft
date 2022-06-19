@@ -1,0 +1,14 @@
+<button ng-click="recargar()">Recargar</button>
+
+<table> 
+   <tr>
+      <td><strong>Sender</strong></td> 
+      <td><strong>Subject</strong>
+      </td> <td><strong>Date</strong></td>
+   </tr> 
+   <tr ng-repeat='message in messages'>
+      <td>{{message.title}}</td> 
+      <td>{{message.categoria}}</td>   
+      <td>{{message.url}}</td>
+   </tr> 
+</table>

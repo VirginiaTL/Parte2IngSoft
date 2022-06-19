@@ -1,0 +1,57 @@
+{
+"usuarios":[
+    {
+            "id":"1",
+            "title": "M83 'Midnight City' Official video",
+            "categoria": "Electro",
+            "url": "https://www.youtube.com/watch?v=dX3k_QDnzHE"
+        },
+    
+        {
+            "id":"2",
+            "title": "Eliot Sumner - I Followed You Home",
+            "categoria": "Indie",
+            "url": "https://www.youtube.com/watch?v=HGhVNp0IQNQ"
+        },
+    
+        {
+            "id":"3",
+            "title": "The Decemberists - Severed",
+            "categoria": "Indie",
+            "url": "https://www.youtube.com/watch?v=ksTFj6L0mao"
+        },
+    
+        {
+            "id":"4",
+            "title": "AC/DC - Highway to Hell (Official Video)",
+            "categoria": "Rock",
+            "url": "https://www.youtube.com/watch?v=l482T0yNkeo"
+        },
+        {
+            "id":"5",
+            "title": "Kate Bush - Running Up That Hill - Official Music Video",
+            "categoria": "Pop",
+            "url": "https://www.youtube.com/watch?v=l482T0yNkeo"
+        },
+        {
+            "id":"6",
+            "title": "The Beach Boys - California Dreamin",
+            "categoria": "Rock",
+            "url": "https://www.youtube.com/watch?v=l482T0yNkeo"
+        },
+        {
+            "id":"7",
+            "title": "Kiss - Detroit City",
+            "categoria": "Heavy Metal",
+            "url": "https://www.youtube.com/watch?v=l482T0yNkeo"
+        },
+        {
+            "id":"8",
+            "title": "Surfaris - Wipe Out",
+            "categoria": "Rock",
+            "url": "https://www.youtube.com/watch?v=l482T0yNkeo"
+        }
+        
+    ],
+    "historia": "Videos recogidos desde la base de datos de Susan."
+}

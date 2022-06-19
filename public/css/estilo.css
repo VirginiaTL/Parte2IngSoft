@@ -176,15 +176,16 @@ div#contenedor_horiz .forgot-pass a:hover{
 
 /*------------------------------------------------------------------------------------------*/
 #container{
-    width: min(100%, 1000px);
-    margin: 100px auto;
+    width: 60%;
+    margin: 50px auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    
   }
 
   .card{
-    width: 230px;
+    width: 50%;
     margin-top: 50px;
     margin-bottom: 50px;
     background-color: rgb(241, 241, 231);
@@ -203,11 +204,10 @@ div#contenedor_horiz .forgot-pass a:hover{
 
   section{
       background-color: rgb(100, 21, 21);
-      width: 100%;
+      width: 200%;
       border-radius: 20px;
       text-align: center;
   }
-
   /*-------------------------*/
   #logout{
     font-family: 'Overpass', sans-serif;

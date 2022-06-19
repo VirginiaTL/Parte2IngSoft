@@ -12,6 +12,8 @@
 	<link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
     <link rel="shortcut icon" type="image/x-icon" href="img/icono_1.ico">
     <LINK rel="stylesheet" type="text/css" href="css/estilo.css" >
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+    <script src="https://code.angularjs.org/1.0.7/angular-sanitize.js"></script>
 	
 	<meta charset = "UTF-8">
 	<TITLE>MusicLab</TITLE>		
@@ -23,7 +25,7 @@
 <DIV id= "encabezado">
     
     <a id="musiclab" href="/infousuario.html">MusicLab</a>
-	<a id="logout" href="/indice.html">LogOut</a>
+	<a id="logout" href="/">LogOut</a>
 	<a href="https://www.upct.es/">
 	<img class = "cabez" src="https://residencias.upct.es/themes/residencias/assets/img/logos/upct_eut_blanco_trans.png">
 	<!--<img class = "cabezicono" src="img/lab.ico"> -->
@@ -37,7 +39,84 @@
 <!---------------------------------------------------------------------------------------------------------->
 
 
-<div id="container"></div>
+<div id="container">
+	<div ng-controller="controladorDatos" ng-app="datosApp">
+  
+   <section>
+				<h2>Rock</h2></section>  
+		<div ng-repeat="usuarios in video.usuarios | filter:'Rock'">
+			
+		  <div class="card" categoria="{{usuarios.categoria}}" > 
+		  {{usuarios.title}}<br><a href="{{usuarios.url}}" target="_blank">{{usuarios.url}}</a><br><span>Categoría: {{usuarios.categoria}}</span>
+	  </div>
+
+		</div>
+
+		<section>
+			<h2>Indie</h2></section>  
+	<div ng-repeat="usuarios in video.usuarios | filter:'Indie'">
+		
+	  <div class="card" categoria="{{usuarios.categoria}}" > 
+	  {{usuarios.title}}<br><a href="{{usuarios.url}}" target="_blank">{{usuarios.url}}</a><br><span>Categoría: {{usuarios.categoria}}</span>
+  </div>
+
+	</div>
+	<section>
+		<h2>Electro</h2></section>  
+<div ng-repeat="usuarios in video.usuarios | filter:'Electro'">
+	
+  <div class="card" categoria="{{usuarios.categoria}}" > 
+  {{usuarios.title}}<br><a href="{{usuarios.url}}" target="_blank">{{usuarios.url}}</a><br><span>Categoría: {{usuarios.categoria}}</span>
+</div>
+
+</div>
+<section>
+	<h2>Pop</h2></section>  
+<div ng-repeat="usuarios in video.usuarios | filter:'Pop'">
+
+<div class="card" categoria="{{usuarios.categoria}}" > 
+{{usuarios.title}}<br><a href="{{usuarios.url}}" target="_blank">{{usuarios.url}}</a><br><span>Categoría: {{usuarios.categoria}}</span>
+</div>
+
+</div>
+<section>
+	<h2>Heavy Metal</h2></section>  
+<div ng-repeat="usuarios in video.usuarios | filter:'Heavy Metal'">
+
+<div class="card" categoria="{{usuarios.categoria}}" > 
+{{usuarios.title}}<br><a href="{{usuarios.url}}" target="_blank">{{usuarios.url}}</a><br><span>Categoría: {{usuarios.categoria}}</span>
+</div>
+
+</div>
+	  
+	  </div>
+</div>
+
+<script type="text/javascript">
+	localStorage.setItem("user-connected", "Estas registrado");
+	document.getElementById("logout").addEventListener("click",loggingout);
+
+function loggingout(){
+    localStorage.removeItem("user-connected");
+    alert("Adiós, has cerrado sesión en MusicLab :(");
+    window.location.href = "";
+}
+
+  
+	var misDatos = angular.module('datosApp', []);
+  
+	misDatos.controller('controladorDatos', function ($scope, $http) {
+	   $scope.video = [];
+  
+	   
+	   $http.get("videos.json")
+	   .success(function (data) {
+		$scope.video = data;
+	   });
+	 
+	});
+			  
+	</script>
 
 
 
@@ -71,7 +150,6 @@
 
 </footer>
 
-<script src="js/data.js" type= "text/javascript" defer></script>
 
 </body>
 
