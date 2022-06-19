@@ -1,0 +1,101 @@
+
+<html ng-app="datosApp" lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Gemunu+Libre&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" type="image/x-icon" href="img/icono_1.ico">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+  <script src="https://code.angularjs.org/1.0.7/angular-sanitize.js"></script>
+<TITLE>MusicLab</TITLE>		
+<LINK rel="stylesheet" type="text/css" href="css/estilo.css" >
+</head>
+
+<body>
+
+  <DIV id= "encabezado">
+    
+    <a id="musiclab" href="/infousuario.html">MusicLab</a>
+    <a id="logout" href="/indice.html">LogOut</a>
+    <a href="https://www.upct.es/">
+    <img class = "cabez" src="https://residencias.upct.es/themes/residencias/assets/img/logos/upct_eut_blanco_trans.png">
+    <!--<img class = "cabezicono" src="img/lab.ico"> -->
+    <img class = "cabezicono" src="img/icono.png">	
+    </a>
+  </DIV>	
+
+  <div id="titulocontenido"> 
+  <h1>Catálogo de videos</h1>
+  </div>
+
+  <div id="container">
+	
+
+  <div ng-controller="controladorDatos"ng-app="datosApp">
+  
+   
+    <div ng-repeat="usuarios in video.usuarios">
+      <div class="card" categoria="{{usuarios.categoria}}" > 
+      {{usuarios.title}} {{usuarios.categoria}} <a href="{{usuarios.url}}" target="_blank">{{usuarios.url}}</a>
+  </div>
+    </div>
+  
+  
+  </div>
+  </div>
+
+  <script type="text/javascript">
+  
+  var misDatos = angular.module('datosApp', []);
+
+  misDatos.controller('controladorDatos', function ($scope, $http) {
+     $scope.video = [];
+
+     
+     $http.get("videos.json")
+     .success(function (data) {
+      $scope.video = data;
+     });
+   
+  });
+            
+  </script>
+
+  <br><br>
+
+  <footer>
+
+	<div id = "pie">
+		<div id = "logo">
+			<a href="https://www.upct.es/">
+				<img src="https://www.upct.es/contenido/universidad/galeria/identidad-2021/logos/logos-upct/marca-upct/s%C3%ADmbolo/azul.png">
+			</a>
+		</div>
+		<div id = "infopie">
+			<h2>
+				LABORATORIO DE INGENIERÍA DE SOFTWARE
+			</h2>
+			<P>Andrea Torres Lucas</P>
+			<P>Virginia Torres Lucas</P>
+		</div>
+		<div id = "correos">
+			<h2>
+				CONTACTOS
+			</h2>
+			<P>andreatorreslucas32@gmail.com</P>
+			<P>virginiatorreslucas@gmail.com</P>
+		</div>
+	</div>
+
+  </footer>
+
+
+</body>
+
+</html>

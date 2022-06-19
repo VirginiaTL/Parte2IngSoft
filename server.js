@@ -49,7 +49,9 @@ server.get('/', function(req, res) {             //cuando hagan un get a esa rut
     });
 
 
-
+    server.get('/datauser', function(req, res) {             //cuando hagan un get a esa ruta, se ejecita esa funcion, genera un objeto respuesta y se lo pasa a la funcion
+        res.sendFile(path.join(__dirname, 'views/infousuario.html'))
+        });
 
 
 
@@ -67,12 +69,12 @@ server.use(bodyParser.json());
 const router = express.Router();
 // Configurar la accion asociada al login
 
-router.post('/loginPrueba', function(req, res) {
+router.post('/respuestajson', function(req, res) {
 // Comprobar si la petición contiene los campos ('user' y 'passwd')
    /* res.sendFile(path.join(__dirname, 'views', 'login.html')); */
    
     if (!req.body.user || !req.body.passwrd) {
-        res.json({ errormsg: 'Peticion mal formada'});
+        res.sendFile(path.join(__dirname, 'views/indice.html'));
         return;
     }
     // La petición está bien formada -> procesarla
@@ -90,28 +92,34 @@ router.post('/loginPrueba', function(req, res) {
     function(err, row) {
         if (row == undefined) {
             // La consulta no devuelve ningun dato -> no existe el usuario
-            res.json({ errormsg: 'El usuario no existe'});
+            //res.json({ errormsg: 'El usuario no existe'});
+            console.log("El usuario no existe");
+            res.sendFile(path.join(__dirname, 'views/indice.html'));
         } else if (row.passwrd === passwrd) {
             // La contraseña es correcta
-            
+        
+
             // Asociar el userID a los datos de la sesión
             req.session.userId = row.id; // solo el id del usuario registrado
             console.log(req.session.userId);
             // Preparar los datos a enviar al navegador (AngularJS)
             var data = {
                 id: row.id,
-                name: row.name,
+                name: row.user,
                 passwrd: row.passwrd
             };
             // enviar en la respuesta serializado en formato JSON
+            console.log(data);
+            //res.json(data);
+            res.sendFile(path.join(__dirname, 'views/infousuario.html'));
             
-            res.json(data);
             
             
             
         } else {
             // La contraseña no es correcta -> enviar este otro mensaje
-            res.json({ errormsg: 'Fallo de autenticación'});
+            //res.json({ errormsg: 'Fallo de autenticación'});
+            console.log("Fallo de autenticación");
         }
         
     }
@@ -121,6 +129,63 @@ router.post('/loginPrueba', function(req, res) {
     
     
 });
+ module.exports= server;
+
+ router.get('/respuestajson', function(req, res) {
+    // Comprobar si la petición contiene los campos ('user' y 'passwd')
+       /* res.sendFile(path.join(__dirname, 'views', 'login.html')); */
+        // La petición está bien formada -> procesarla
+        // TODO: procesar la peticón
+        //processLogin(req, res, db);
+        var iduser = req.session.userId;
+        console.log(iduser); 
+
+        const sql = 'SELECT * FROM videos WHERE id_user=?';
+        db.each(
+        // consulta y parámetros cuyo valor será usado en los '?'
+        sql, iduser,
+        // funcion que se invocará con los datos obtenidos de la base de datos
+        function(err, rows) {
+            if (rows == undefined) {
+                // La consulta no devuelve ningun dato -> no existe el usuario
+                res.json({ errormsg: 'No hay videos que mostrar'});
+            } else if (rows.id_user === iduser) {
+                // La contraseña es correcta
+                
+                // Asociar el userID a los datos de la sesión
+                req.session.userId = rows.id_user; // solo el id del usuario registrado
+                console.log(req.session.userId);
+                // Preparar los datos a enviar al navegador (AngularJS)
+                /*var data = {
+                    id: row.id,
+                    title: row.title,
+                    categoria: row.categoria
+                };*/
+                // enviar en la respuesta serializado en formato JSON
+                console.log(sql);
+                //console.log(data);
+                //res.json(data);
+
+            
+
+               // res.render("views/prueba.html",{modelo:rows});
+                
+                
+                
+                
+            } else {
+                // La contraseña no es correcta -> enviar este otro mensaje
+                res.json({ errormsg: 'Fallo de autenticación'});
+            }
+            
+        }
+        
+        );
+    
+
+        
+    });
+
 
 
 //function processLogin(req, res, db){
@@ -206,6 +271,6 @@ server.use(express.static('public'));       //carpeta dentro de email-app
 
 
 // Poner en marcha el servidor
-server.listen(8080, function()  {
-    console.log('Servidor corriendo en el puerto 8080');
+server.listen(4044, function()  {
+    console.log('Servidor corriendo en el puerto 4044');
 });
