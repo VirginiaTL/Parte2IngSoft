@@ -44,47 +44,47 @@
   
    <section>
 				<h2>Rock</h2></section>  
-		<div ng-repeat="usuarios in video.usuarios | filter:'Rock'">
+		<div ng-repeat="video in videos | filter:'Rock'">
 			
-		  <div class="card" categoria="{{usuarios.categoria}}" > 
-		  {{usuarios.title}}<br><a href="{{usuarios.url}}" target="_blank">{{usuarios.url}}</a><br><span>Categoría: {{usuarios.categoria}}</span>
+		  <div class="card" categoria="{{video.categoria}}" > 
+		  {{video.title}}<br><a href="{{video.url}}" target="_blank">{{video.url}}</a><br><span>Categoría: {{video.categoria}}</span>
 	  </div>
 
 		</div>
 
 		<section>
 			<h2>Indie</h2></section>  
-	<div ng-repeat="usuarios in video.usuarios | filter:'Indie'">
+	<div ng-repeat="video in videos | filter:'Indie'">
 		
-	  <div class="card" categoria="{{usuarios.categoria}}" > 
-	  {{usuarios.title}}<br><a href="{{usuarios.url}}" target="_blank">{{usuarios.url}}</a><br><span>Categoría: {{usuarios.categoria}}</span>
+	  <div class="card" categoria="{{video.categoria}}" > 
+	  {{video.title}}<br><a href="{{video.url}}" target="_blank">{{video.url}}</a><br><span>Categoría: {{video.categoria}}</span>
   </div>
 
 	</div>
 	<section>
 		<h2>Electro</h2></section>  
-<div ng-repeat="usuarios in video.usuarios | filter:'Electro'">
+<div ng-repeat="video in videos | filter:'Electro'">
 	
-  <div class="card" categoria="{{usuarios.categoria}}" > 
-  {{usuarios.title}}<br><a href="{{usuarios.url}}" target="_blank">{{usuarios.url}}</a><br><span>Categoría: {{usuarios.categoria}}</span>
+  <div class="card" video="{{usuarios.categoria}}" > 
+  {{video.title}}<br><a href="{{video.url}}" target="_blank">{{video.url}}</a><br><span>Categoría: {{video.categoria}}</span>
 </div>
 
 </div>
 <section>
 	<h2>Pop</h2></section>  
-<div ng-repeat="usuarios in video.usuarios | filter:'Pop'">
+<div ng-repeat="video in videos | filter:'Pop'">
 
-<div class="card" categoria="{{usuarios.categoria}}" > 
-{{usuarios.title}}<br><a href="{{usuarios.url}}" target="_blank">{{usuarios.url}}</a><br><span>Categoría: {{usuarios.categoria}}</span>
+<div class="card" categoria="{{video.categoria}}" > 
+{{video.title}}<br><a href="{{video.url}}" target="_blank">{{video.url}}</a><br><span>Categoría: {{video.categoria}}</span>
 </div>
 
 </div>
 <section>
 	<h2>Heavy Metal</h2></section>  
-<div ng-repeat="usuarios in video.usuarios | filter:'Heavy Metal'">
+<div ng-repeat="video in videos | filter:'Heavy Metal'">
 
-<div class="card" categoria="{{usuarios.categoria}}" > 
-{{usuarios.title}}<br><a href="{{usuarios.url}}" target="_blank">{{usuarios.url}}</a><br><span>Categoría: {{usuarios.categoria}}</span>
+<div class="card" categoria="{{video.categoria}}" > 
+{{video.title}}<br><a href="{{video.url}}" target="_blank">{{video.url}}</a><br><span>Categoría: {{video.categoria}}</span>
 </div>
 
 </div>
@@ -106,12 +106,12 @@ function loggingout(){
 	var misDatos = angular.module('datosApp', []);
   
 	misDatos.controller('controladorDatos', function ($scope, $http) {
-	   $scope.video = [];
+	   $scope.videos = [];
   
 	   
 	   $http.get("videos.json")
 	   .success(function (data) {
-		$scope.video = data;
+		$scope.videos = data;
 	   });
 	 
 	});
@@ -123,6 +123,23 @@ function loggingout(){
 <!------------------------------------------------------------------------------------------------------------------>
 
 <br><br>
+
+
+<div class="cpl-md-6 mt-4 card">
+  <form action= "/nuevovideo" method="post" class="card-body">
+  <h3 class="card-title">Añade un video</h3>
+  <div class="form-group">
+    <input type="text" name="title" class="form-control" placeholder="Titulo">
+  </div>
+  <div class="form-group">
+    <input type="text" name="categoria" class="form-control" placeholder="Categoría">
+  </div>
+  <div class="form-group">
+    <input type="url" name="url" class="form-control" placeholder="Url">
+  </div>
+  <input type="submit" class="btn-primary">
+  </form>
+</div>
 
 <footer >
 
