@@ -1,5 +1,5 @@
-{
-"usuarios":[
+
+[
     {
             "id":"1",
             "title": "M83 'Midnight City' Official video",
@@ -52,6 +52,4 @@
             "url": "https://www.youtube.com/watch?v=l482T0yNkeo"
         }
         
-    ],
-    "historia": "Videos recogidos desde la base de datos de Susan."
-}
+]

@@ -57,6 +57,7 @@ server.get('/', function(req, res) {             //cuando hagan un get a esa rut
 
 // Obtener la referencia al módulo 'body-parser'
 const bodyParser = require('body-parser');
+const { title } = require('process');
 //const res = require('express/lib/response');
 
 // Configuring express to use body-parser as middle-ware.
@@ -68,6 +69,8 @@ server.use(bodyParser.json());
 //si se hace l Obtener el configurador de rutas
 const router = express.Router();
 // Configurar la accion asociada al login
+
+const fs = require('fs');
 
 router.post('/respuestajson', function(req, res) {
 // Comprobar si la petición contiene los campos ('user' y 'passwd')
@@ -131,9 +134,38 @@ router.post('/respuestajson', function(req, res) {
 });
  module.exports= server;
 
+const vids = [];
+
+
+router.get('/', (req,res) => {
+    res.render('views/infousuario.html',{
+        vids
+    })
+});
+
+router.get('/nuevovideo', (req,res) =>{
+    res.render('views/infousuario.html');
+});
+
+router.post('/nuevovideo', (req, res) =>{
+    const {title, categoria, url} = req.body;
+    let newvid = {
+        title,
+        categoria,
+        url
+    }
+    vids.push(newvid);
+
+    const jsonvids = JSON.stringify(vids);
+    fs.writeFileSync('public/videos.json',jsonvids, 'utf-8');
+
+    res.send('received');
+});
+
+ /*
  router.get('/respuestajson', function(req, res) {
     // Comprobar si la petición contiene los campos ('user' y 'passwd')
-       /* res.sendFile(path.join(__dirname, 'views', 'login.html')); */
+       // res.sendFile(path.join(__dirname, 'views', 'login.html')); 
         // La petición está bien formada -> procesarla
         // TODO: procesar la peticón
         //processLogin(req, res, db);
@@ -156,11 +188,11 @@ router.post('/respuestajson', function(req, res) {
                 req.session.userId = rows.id_user; // solo el id del usuario registrado
                 console.log(req.session.userId);
                 // Preparar los datos a enviar al navegador (AngularJS)
-                /*var data = {
-                    id: row.id,
-                    title: row.title,
-                    categoria: row.categoria
-                };*/
+                //var data = {
+                    //id: row.id,
+                    //title: row.title,
+                    //categoria: row.categoria
+                //};
                 // enviar en la respuesta serializado en formato JSON
                 console.log(sql);
                 //console.log(data);
@@ -185,6 +217,7 @@ router.post('/respuestajson', function(req, res) {
 
         
     });
+    */
 
 
 
